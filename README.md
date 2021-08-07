@@ -1,7 +1,5 @@
 # TicTacToe
 
-# tic-tac-toe
-
 ## Minimax Algorithm Visualisation
 <!-- ![alt text](https://github.com/jaroslawroszyk/tic-tac-toe/master/MiniMax-algorithm.png) -->
 ![algo](MinMaxALgo.png)
