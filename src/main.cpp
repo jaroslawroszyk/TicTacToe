@@ -4,6 +4,5 @@ int main() {
     Board board;
     std::cout << "\n";
     std::cout << "\n";
-    std::cout << "\n";
     return 0;
 }
