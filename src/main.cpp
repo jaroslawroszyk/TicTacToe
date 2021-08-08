@@ -2,7 +2,11 @@
 #include <iostream>
 int main() {
     Board board;
-    std::cout << "\n";
-    std::cout << "\n";
+    
+    board.drawBoard();
+    auto [row, col, mark]  = board.getUserInput();
+    board.refresh(row, col, mark);
+    board.drawBoard();
+    
     return 0;
 }
