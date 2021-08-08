@@ -4,8 +4,6 @@
 
 class Ai
 {
-private:
-    int order{};
 public:
     virtual void make_move(Board &board) = 0;
 };
