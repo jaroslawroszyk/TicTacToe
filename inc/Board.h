@@ -12,7 +12,9 @@ public:
     void refresh(size_t row, size_t col, char mark);
     Input getUserInput();
     void reset();
-    
+    bool freeField(int x, int y);
+    bool isGameOver();
+
 private:
     std::array<std::array<char, 3>, 3> m_board = {{{'_', '_', '_'},
                                                    {'_', '_', '_'},
