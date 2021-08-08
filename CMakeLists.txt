@@ -8,6 +8,9 @@ include_directories(src)
 set(SRC
     src/Board.cpp
     src/TicTacToeMenu.cpp
+    src/Easy.cpp
+    src/Medium.cpp
+    src/Hard.cpp
 )
 
 set(FLAGS
