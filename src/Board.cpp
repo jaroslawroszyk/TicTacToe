@@ -50,3 +50,23 @@ void Board::reset()
         }
     }
 }
+
+bool Board::freeField(int x,int y)
+{
+    return m_board[x][y] == '_';
+}
+
+bool Board::isGameOver()
+{
+    for (auto &row : m_board)
+    {
+        for(auto &field : row)
+        {
+            if(field == '_')
+            {
+                return true;
+            }
+        }
+    }
+    return false;
+}
