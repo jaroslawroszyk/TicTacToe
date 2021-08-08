@@ -13,23 +13,6 @@ void menu()
     MenuMode choose;
     do
     {
-        // class ai
-        // {
-        //     public:
-        //     virtual void do_sth() = 0;
-        // }
-        // calss easy :public ai
-        // {
-        //     do_sth wylkorszytnie rand;
-        // }
-        // class medium
-        // {
-        //     przewidywanie 1 ruchu do przodu 
-        // }
-        // class hard;
-        // {
-        //     minmax
-        // }
         std::cout << "[1] Player vs Player \n";
         std::cout << "[2] Player vs EasyAi\n";
         std::cout << "[3] Player vs MediumAi\n";
