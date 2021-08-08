@@ -20,6 +20,7 @@ void Board::drawBoard() const
 
 void Board::refresh(size_t row, size_t col, char mark)
 {
+    //todo: podawac tylko koordy a ai stawia samemu znak
     mark = static_cast<char>(std::toupper(mark));
     if (m_board[row - 1][col - 1] == '_' and (mark == 'X' or mark == 'O'))
     {
@@ -53,7 +54,7 @@ void Board::reset()
 
 bool Board::freeField(int x,int y)
 {
-    return m_board[x][y] == '_';
+    return m_board[x][y] == '_' ? true : false;
 }
 
 bool Board::isGameOver()
