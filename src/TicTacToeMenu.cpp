@@ -1,6 +1,6 @@
 #include <iostream>
 #include "TictactoeMode.h"
-
+#include "Board.h"
 std::istream &operator>>(std::istream &in, MenuMode &enter)
 {
     int int_entry{};
@@ -13,17 +13,34 @@ void menu()
     MenuMode choose;
     do
     {
+        // class ai
+        // {
+        //     public:
+        //     virtual void do_sth() = 0;
+        // }
+        // calss easy :public ai
+        // {
+        //     do_sth wylkorszytnie rand;
+        // }
+        // class medium
+        // {
+        //     przewidywanie 1 ruchu do przodu 
+        // }
+        // class hard;
+        // {
+        //     minmax
+        // }
         std::cout << "[1] Player vs Player \n";
         std::cout << "[2] Player vs EasyAi\n";
         std::cout << "[3] Player vs MediumAi\n";
         std::cout << "[4] Player vs HardAi\n"; //algorithm MiniMax
-
         std::cout << "[5] Exit\n";
         std::cin >> choose;
         switch (choose)
         {
         case MenuMode::player_vs_player:
         {
+        
             break;
         }
         case MenuMode::player_vs_EasyAi:
