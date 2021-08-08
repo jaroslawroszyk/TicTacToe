@@ -7,6 +7,7 @@ include_directories(src)
 
 set(SRC
     src/Board.cpp
+    src/TicTacToeMenu.cpp
 )
 
 set(FLAGS
