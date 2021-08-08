@@ -1,14 +1,10 @@
 #include "Board.h"
-#include "TictactoeMode.h"
+#include "Game.h"
 #include <iostream>
+
 int main()
 {
-    Board board;
-    menu();
-    board.drawBoard();
-    auto [row, col, mark]  = board.getUserInput();
-    board.refresh(row, col, mark);
-    board.drawBoard();
-    
+    Game dzialaj;
+    dzialaj.menu();
     return 0;
 }
