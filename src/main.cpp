@@ -1,8 +1,9 @@
 #include "Board.hpp"
+#include "TictactoeMode.h"
 #include <iostream>
-int main() {
+int main()
+{
     Board board;
-    std::cout << "\n";
-    std::cout << "\n";
+    menu();
     return 0;
 }
