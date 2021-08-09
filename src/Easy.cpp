@@ -1,22 +1,21 @@
-#include <iostream>
-#include <cstdlib>
 #include "Easy.h"
 
-void Easy::make_move(Board &board)
-{
-    int x{0};
-    int y{0};
-    do
-    {
-        x = (std::rand() % 3) + 1;
-        y = (std::rand() % 3) + 1;
-        std::cout << x << '\n';
-        std::cout << y << '\n';
-        std::cout << board.freeField(x,y) << '\n';
-        std::cout << board.getBoard()[x][y] << '\n';
+#include <iostream>
+#include <random>
 
-    } while (board.freeField(x, y) && !board.isGameOver());
-    board.refresh(x, y,'O');
-    // std::cout << x << '\n';
-    // std::cout << y << '\n';
+size_t getRand(int min, int max) {
+    std::random_device device;
+    std::mt19937 gen(device());
+    std::uniform_int_distribution<int> distirb(min, max);
+
+    return static_cast<size_t>(distirb(gen));
+}
+
+void Easy::make_move(Board& board) {
+    size_t x{}, y{};
+    do {
+        x = getRand(1, 3);
+        y = getRand(1, 3);
+    } while (board.isTaken(x, y));
+    board.refresh(x, y, 'O');
 }

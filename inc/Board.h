@@ -1,28 +1,29 @@
 #pragma once
-#include <iostream>
 #include <array>
+#include <iostream>
 #include <tuple>
+#include <vector>
 
 using Input = std::tuple<size_t, size_t, char>;
+using Array = std::array<std::array<char, 3>, 3>;
+using Moves = std::vector<std::pair<size_t, size_t>>;
 
-class Board
-{
+class Board {
 public:
     void drawBoard() const;
     void refresh(size_t row, size_t col, char mark);
     Input getUserInput();
     void reset();
-    bool freeField(int x=0, int y=0);
-    bool isGameOver();
-    //todo: check who will win
-    
-    std::array<std::array<char, 3>, 3> getBoard() const
-    {
+    bool isTaken(size_t x, size_t y);
+    char checkWinner() const;
+
+    Array getBoard() const {
         return m_board;
     }
 
 private:
-    std::array<std::array<char, 3>, 3> m_board = {{{'_', '_', '_'},
-                                                   {'_', '_', '_'},
-                                                   {'_', '_', '_'}}};
+    Moves m_moves{};
+    Array m_board = {{{'_', '_', '_'},
+                      {'_', '_', '_'},
+                      {'_', '_', '_'}}};
 };
