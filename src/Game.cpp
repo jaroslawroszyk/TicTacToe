@@ -35,8 +35,10 @@ void Game::playerVsEasyAi() {
         if (winner == 'X' || winner == 'O') {
             board.drawBoard();
             std::cout << winner << " WON!\n";
+             board.reset();
             return;
         }
+       
     }
 }
 
