@@ -16,6 +16,9 @@ public:
     void reset();
     bool isTaken(size_t x, size_t y);
     char checkWinner() const;
+    bool areMovesLeft() const;
+    void setField(size_t x, size_t y, char mark);
+    char getField(size_t x, size_t y) const { return m_board[x][y]; }
 
     Array getBoard() const {
         return m_board;

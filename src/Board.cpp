@@ -49,6 +49,10 @@ bool Board::isTaken(size_t x, size_t y) {
            }) != m_moves.end();
 }
 
+void Board::setField(size_t x, size_t y, char mark) {
+    m_board[x][y] = mark;
+}
+
 char Board::checkWinner() const {
     // Row
     for (size_t i = 0; i < 3; i++) {
@@ -74,3 +78,15 @@ char Board::checkWinner() const {
     }
     return '_';
 }
+
+bool Board::areMovesLeft() const {
+    for (const auto& row : m_board) {
+        for (const auto field : row) {
+            if (field == '_') {
+                return true;
+            }
+        }
+    }
+    return false;
+}
+

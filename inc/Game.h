@@ -1,7 +1,6 @@
 #pragma once
 #include "Board.h"
 #include <iostream>
-#include "Easy.h"
 
 enum class MenuMode
 {
@@ -19,6 +18,8 @@ class Game
 public:
     void playerVsPlayer();
     void playerVsEasyAi();
+    void playerVsMediumAi();
+    void PlayerVsHardAi();
     void menu();
     //todo getscore count score
     int getScore() const

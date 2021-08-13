@@ -1,5 +1,9 @@
 #include "Game.h"
 
+#include "Easy.h"
+#include "Medium.h"
+#include "Hard.h"
+
 constexpr int movesPerGame = 9;
 
 std::istream& operator>>(std::istream& in, MenuMode& enter) {
@@ -27,9 +31,56 @@ void Game::playerVsEasyAi() {
         board.drawBoard();
         if (i % 2 != 0) {
             auto [row, col, mark] = board.getUserInput();
-            board.refresh(row, col, mark);
+            if (board.isTaken(row, col)) {
+                i--;
+            } else {
+                board.refresh(row, col, mark);
+            }
         } else {
             botEasy.make_move(board);
+        }
+        char winner = board.checkWinner();
+        if (winner == 'X' || winner == 'O') {
+            board.drawBoard();
+            std::cout << winner << " WON!\n";
+            return;
+        }
+    }
+}
+
+void Game::playerVsMediumAi() {
+    // int i{};
+    // Medium botMedium;
+    // while (i < movesPerGame) {
+    //     i++;
+    //     board.drawBoard();
+    //     if (i % 2 != 0) {
+    //         auto [row, col, mark] = board.getUserInput();
+    //         board.refresh(row, col, mark);
+            
+    //     } else {
+    //         botMedium.make_move(board);
+    //     }
+    //     char winner = board.checkWinner();
+    //     if (winner == 'X' || winner == 'O') {
+    //         board.drawBoard();
+    //         std::cout << winner << " WON!\n";
+    //         return;
+    //     }
+    // }
+}
+
+void Game::PlayerVsHardAi() {
+    int i{};
+    Hard botHard;
+    while (i < movesPerGame) {
+        i++;
+        board.drawBoard();
+        if (i % 2 != 0) {
+            auto [row, col, mark] = board.getUserInput();
+            board.refresh(row, col, mark);
+        } else {
+            botHard.make_move(board);
         }
         char winner = board.checkWinner();
         if (winner == 'X' || winner == 'O') {
@@ -59,9 +110,11 @@ void Game::menu() {
             break;
         }
         case MenuMode::player_vs_MediumAi: {
+            playerVsMediumAi();
             break;
         }
         case MenuMode::player_vs_HardAi: {
+            PlayerVsHardAi();
             break;
         }
         case MenuMode::exit: {
