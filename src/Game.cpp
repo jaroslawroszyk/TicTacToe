@@ -2,74 +2,107 @@
 
 constexpr int movesPerGame = 9;
 
-std::istream& operator>>(std::istream& in, MenuMode& enter) {
+std::istream &operator>>(std::istream &in, MenuMode &enter)
+{
     int int_entry{};
     enter = (in >> int_entry) ? static_cast<MenuMode>(int_entry) : MenuMode::exit;
     return in;
 }
 
-void Game::playerVsPlayer() {
+void Game::playerVsPlayer()
+{
     int i{};
-    while (i < movesPerGame) {
+    while (i < movesPerGame)
+    {
         i++;
         board.drawBoard();
-        auto [row, col, mark] = board.getUserInput();
-        board.refresh(row, col, mark);
+        if (i % 2 != 0)
+        {
+            auto [row, col] = board.getUserInput();
+            board.refresh(row, col, 'X');
+        }
+        else
+        {
+            auto [row, col] = board.getUserInput();
+            board.refresh(row, col, 'O');
+        }
+        char winner = board.checkWinner();
+        if (winner == 'X' || winner == 'O')
+        {
+            board.drawBoard();
+            std::cout << winner << " WON!\n";
+            board.reset();
+            return;
+        }
     }
     board.drawBoard();
 }
 
-void Game::playerVsEasyAi() {
+void Game::playerVsEasyAi()
+{
     int i{};
     Easy botEasy;
-    while (i < movesPerGame) {
+    while (i < movesPerGame)
+    {
         i++;
         board.drawBoard();
-        if (i % 2 != 0) {
-            auto [row, col, mark] = board.getUserInput();
-            board.refresh(row, col, mark);
-        } else {
+        if (i % 2 != 0)
+        {
+            auto [row, col] = board.getUserInput();
+            board.refresh(row, col, 'X');
+        }
+        else
+        {
             botEasy.make_move(board);
         }
         char winner = board.checkWinner();
-        if (winner == 'X' || winner == 'O') {
+        if (winner == 'X' || winner == 'O')
+        {
             board.drawBoard();
             std::cout << winner << " WON!\n";
-             board.reset();
+            board.reset();
             return;
         }
-       
     }
 }
 
-void Game::menu() {
+void Game::menu()
+{
     MenuMode choose;
-    do {
+    do
+    {
         std::cout << "[1] Player vs Player \n";
         std::cout << "[2] Player vs EasyAi\n";
         std::cout << "[3] Player vs MediumAi\n";
-        std::cout << "[4] Player vs HardAi\n";  //algorithm MiniMax
+        std::cout << "[4] Player vs HardAi\n"; //algorithm MiniMax
         std::cout << "[5] Exit\n";
         std::cin >> choose;
-        switch (choose) {
-        case MenuMode::player_vs_player: {
+        switch (choose)
+        {
+        case MenuMode::player_vs_player:
+        {
             playerVsPlayer();
             break;
         }
-        case MenuMode::player_vs_EasyAi: {
+        case MenuMode::player_vs_EasyAi:
+        {
             playerVsEasyAi();
             break;
         }
-        case MenuMode::player_vs_MediumAi: {
+        case MenuMode::player_vs_MediumAi:
+        {
             break;
         }
-        case MenuMode::player_vs_HardAi: {
+        case MenuMode::player_vs_HardAi:
+        {
             break;
         }
-        case MenuMode::exit: {
+        case MenuMode::exit:
+        {
             break;
         }
-        default: {
+        default:
+        {
             std::cout << "Invalid option \n";
             break;
         }
