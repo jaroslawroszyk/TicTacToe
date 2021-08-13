@@ -1,5 +1,9 @@
 #include "Game.h"
 
+#include "Easy.h"
+#include "Medium.h"
+#include "Hard.h"
+
 constexpr int movesPerGame = 9;
 
 std::istream &operator>>(std::istream &in, MenuMode &enter)

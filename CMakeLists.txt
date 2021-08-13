@@ -14,7 +14,6 @@ set(SRC
 )
 
 set(FLAGS
-    -Werror
     -Wall
     -pedantic
     -Wconversion
