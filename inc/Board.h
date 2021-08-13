@@ -4,7 +4,7 @@
 #include <tuple>
 #include <vector>
 
-using Input = std::tuple<size_t, size_t, char>;
+using Input = std::tuple<size_t, size_t>;
 using Array = std::array<std::array<char, 3>, 3>;
 using Moves = std::vector<std::pair<size_t, size_t>>;
 
