@@ -32,7 +32,7 @@ Input Board::getUserInput() {
     std::cin >> row;
     std::cout << "Col: ";
     std::cin >> col;
-    return {row, col, 'X'};
+    return {row, col};
 }
 
 void Board::reset() {
@@ -41,6 +41,7 @@ void Board::reset() {
             field = '_';
         }
     }
+    m_moves.clear();
 }
 
 bool Board::isTaken(size_t x, size_t y) {
