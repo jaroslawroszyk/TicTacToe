@@ -1,10 +1,8 @@
-#include "Board.h"
 #include "Game.h"
-#include <iostream>
 
-int main()
+auto main() -> int
 {
-    Game dzialaj;
-    dzialaj.menu();
+    Game start;
+    start.menu();
     return 0;
 }

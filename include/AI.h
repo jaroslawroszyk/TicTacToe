@@ -5,5 +5,5 @@
 class Ai
 {
 public:
-    virtual void make_move(Board &board) = 0;
+    virtual void make_move(Board & board) = 0;
 };

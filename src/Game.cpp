@@ -1,19 +1,19 @@
-#include "Game.h"
+#include "../include/Game.h"
 
-#include "Easy.h"
-#include "Medium.h"
-#include "Hard.h"
+#include "../include/Easy.h"
+//#include "../include/Medium.h"
+//#include "../include/Hard.h"
 
 constexpr int movesPerGame = 9;
 
-std::istream &operator>>(std::istream &in, MenuMode &enter)
+std::istream &operator>>(std::istream &in , MenuMode &enter)
 {
     int int_entry{};
     enter = (in >> int_entry) ? static_cast<MenuMode>(int_entry) : MenuMode::exit;
     return in;
 }
 
-void Game::playerVsPlayer()
+auto Game::playerVsPlayer()->void
 {
     int i{};
     while (i < movesPerGame)
@@ -22,13 +22,13 @@ void Game::playerVsPlayer()
         board.drawBoard();
         if (i % 2 != 0)
         {
-            auto [row, col] = board.getUserInput();
-            board.refresh(row, col, 'X');
+            auto [row , col] = board.getUserInput();
+            board.refresh(row , col , 'X');
         }
         else
         {
-            auto [row, col] = board.getUserInput();
-            board.refresh(row, col, 'O');
+            auto [row , col] = board.getUserInput();
+            board.refresh(row , col , 'O');
         }
         char winner = board.checkWinner();
         if (winner == 'X' || winner == 'O')
@@ -42,7 +42,7 @@ void Game::playerVsPlayer()
     board.drawBoard();
 }
 
-void Game::playerVsEasyAi()
+auto Game::playerVsEasyAi()->void
 {
     int i{};
     Easy botEasy;
@@ -52,8 +52,8 @@ void Game::playerVsEasyAi()
         board.drawBoard();
         if (i % 2 != 0)
         {
-            auto [row, col] = board.getUserInput();
-            board.refresh(row, col, 'X');
+            auto [row , col] = board.getUserInput();
+            board.refresh(row , col , 'X');
         }
         else
         {
@@ -70,7 +70,7 @@ void Game::playerVsEasyAi()
     }
 }
 
-void Game::menu()
+auto Game::menu()->void
 {
     MenuMode choose;
     do
@@ -83,33 +83,33 @@ void Game::menu()
         std::cin >> choose;
         switch (choose)
         {
-        case MenuMode::player_vs_player:
-        {
-            playerVsPlayer();
-            break;
-        }
-        case MenuMode::player_vs_EasyAi:
-        {
-            playerVsEasyAi();
-            break;
-        }
-        case MenuMode::player_vs_MediumAi:
-        {
-            break;
-        }
-        case MenuMode::player_vs_HardAi:
-        {
-            break;
-        }
-        case MenuMode::exit:
-        {
-            break;
-        }
-        default:
-        {
-            std::cout << "Invalid option \n";
-            break;
-        }
+            case MenuMode::player_vs_player:
+            {
+                playerVsPlayer();
+                break;
+            }
+            case MenuMode::player_vs_EasyAi:
+            {
+                playerVsEasyAi();
+                break;
+            }
+            case MenuMode::player_vs_MediumAi:
+            {
+                break;
+            }
+            case MenuMode::player_vs_HardAi:
+            {
+                break;
+            }
+            case MenuMode::exit:
+            {
+                break;
+            }
+            default:
+            {
+                std::cout << "Invalid option \n";
+                break;
+            }
         }
     } while (choose != MenuMode::exit);
 }

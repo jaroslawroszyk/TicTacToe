@@ -6,5 +6,5 @@ class Medium : public Ai
 {
 private:
 public:
-    void make_move(Board &board) override;
+    auto make_move(Board &board) -> void override;
 };
